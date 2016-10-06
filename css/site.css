@@ -225,9 +225,9 @@ ul.nav li a:hover {
 }
 
 #info p {
-    font-size: 14px;
+    font-size: 18px;
     padding: 4px;
-    line-height: 19px;
+    line-height: 1.5em;
     font-weight: 300;
 }
 
