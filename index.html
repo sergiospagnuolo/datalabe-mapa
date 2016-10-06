@@ -68,23 +68,20 @@
                 <th class="tHeader">Endereço</th>
                 <th class="tHeader">Cidade</th>
                 <th class="tHeader">Tag</th>
-                <th class="">Elsewhere</th>
             </tr> {{#rows}}
             <tr id="{{rowNumber}}" class="spotRow">
                 <td>{{nome}}</td>
                 <td>{{endereco}}</td>
                 <td>{{cidade}}</td>
                 <td>{{tag}}</td>
-                <td><a class="button" href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">G Map</a></td>
             </tr> {{/rows}} </table>
     </script>
     <script id="latestSpot" type="text/html"> {{#rows}}
         <h4 class="fauxButton">Projeto</h4>
         <h2>{{nome}}</h2>
         <p class="colorText">{{endereco}}
-            <p>
+        </p>
                 <p class="colorText">{{cidade}} - {{estado}}</p>
-                <!-- "nome", "endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "tag",	"secundario", "descricao" -->
                 <ul>
                     <li><span class="category">Descrição:</span> {{descricao}}</li>
                     <li><span class="category">Site:</span> <a href="{{pagina}}" tager="_blank">{{pagina}}</a></li>
@@ -93,7 +90,7 @@
                     <li><span class="category">Outros assuntos:</span> {{tag2}}</li>
                 </ul>
                 <ul>
-                    <li><a href="https://maps.google.com/maps?q={{address}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
+                    <a class="button" href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">Veja no Google Maps</a>
                 </ul> {{/rows}} </script>
     <script id="theNumberofSpots" type="text/html">
         <p><strong><span class="red-text">{{numberOfSpots}}</span></strong> projetos mapeados!</p>
@@ -102,9 +99,8 @@
         <h4 class="fauxButton">Projeto</h4>
         <h2>{{nome}}</h2>
         <p class="colorText">{{endereco}}
-            <p>
+        </p>
                 <p class="colorText">{{cidade}} - {{estado}}</p>
-                <!-- "nome", "endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "tag",	"secundario", "descricao" -->
                 <ul>
                     <li><span class="category">Descrição:</span> {{descricao}}</li>
                     <li><span class="category">Site:</span> <a href="{{pagina}}" tager="_blank">{{pagina}}</a></li>
@@ -113,7 +109,7 @@
                     <li><span class="category">Outros assuntos:</span> {{tag2}}</li>
                 </ul>
                 <ul>
-                    <li><a href="https://maps.google.com/maps?q={{address}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
+                    <a class="button" href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">Veja no Google Maps</a>
                 </ul> {{/rows}} </script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
