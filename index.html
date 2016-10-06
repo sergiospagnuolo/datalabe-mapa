@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mapa do Jornalismo Comunitário</title>
+    <meta charset='utf-8'>
+    <script type="text/javascript" src='js/jquery.js '></script>
+    <script type="text/javascript" src='js/tabletop1.3.4.js'></script>
+    <script type="text/javascript" src='js/sheetsee.js'></script>
+    <script type="text/javascript" src='js/leaflet.markercluster.js'></script>
+    <link rel="shortcut icon" href="https://raw.github.com/jlord/hack-spots/master/favico.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Shadows+Into+Light" rel="stylesheet">
+    <link media="screen" rel="stylesheet" type="text/css" href="css/style.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="css/site.css">
+    <link rel="stylesheet" href="css/MarkerCluster.css" />
+    <link rel="stylesheet" href="css/MarkerCluster.Default.css" /> </head>
+<script src="https://use.fontawesome.com/ad3531ba27.js"></script>
+
+<body>
+    <div class="wrapper">
+        <h1>Mapa do Jornalismo Comunitário</h1>
+        <div>
+            <ul class="nav">
+                <li><a href="http://datalabe.org" target="_blank"><strong>Um projeto do Data_Labe</strong></a> - <a href="http://observatoriodefavelas.org.br" target="_blank">Observatório de Favelas</a> || </li>
+                <li><a href="#info">Sobre o Projeto</a> -</li>
+                <li><a href="#colabore" target="_blank">Colabore</a> || </li>
+                <li><a href="http://www.facebook.com/datalabe" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a>
+                    <li><a href="http://www.twitter.com/data_labe" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
+                    <li><a href="http://www.medium.com/data-labe" target="_blank"><i class="fa fa-medium fa-lg" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <input id="tableFilter" type="text" placeholder="Busque um projeto"> <span class="clear button">Limpar</span> <span class="resetMap button">Reiniciar Mapa</span> <span class="noMatches">Não encontramos esse projeto, tente outro!</span> </div>
+    </div>
+    <div class="container-mapa">
+        <div id="map"></div>
+    </div>
+    <div class="wrapper">
+        <div class="container">
+            <div id="rightSide">
+                <div id="latestSpot"></div>
+                <div id="selectedSpot"></div>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div id="hackSpotsTable"></div>
+        </div>
+        <div id="info" class="container">
+            <h3>Colabore</h3>
+            <div id="theNumberofSpots"></div>
+            <p>O mapa do jornalismo comunitário é uma plataforma de georeferenciamento que reúne veículos de comunicação comunitária do Brasil. Entendemos como veículos de comunicação comunitária aqueles que se caracterizam por processos baseados em princípios públicos, que propiciem a participação ativa da população, que sejam de propriedade coletiva e que não tenham fins lucrativos. </p>
+            <p>Nesse mapa, escolhemos abranger aqueles veículos já articulados, produzidos, difundidos ou protagonizados por sujeitos, coletivos e organizações de favelas e outros territórios populares. Excluímos os blogs pessoais, veículos que não produzem conteúdo próprio ou só replicam conteúdo de outros e os que estão inativos.</p>
+            <p>A plataforma é colaborativa e qualquer iniciativa que se encaixe nos critérios estabelecidos pode se inscrever e ser adicionada ao mapa. Utilizamos como ponto de partida a base de dados produzida pelo projeto Direito à Comunicação e Justiça Racial, realizado em 2014 pelo @Observatório de Favelas. A partir dela entramos em contato com os veículos, a atualizamos e conseguimos iniciar a plataforma com alguns dos principais veículos de comunicação comunitária do Rio de Janeiro.</p>
+            <p>O projeto é um dos produtos do @Datalabe, um laboratório de dados na favela. Acreditamos que o empoderamento da juventude de periferia do Brasil passa, necessariamente, pelo acesso, produção e difusão de informações e hoje o jornalismo comunitário é um dos principais responsáveis por garantir esses direitos. Aqui, pretendemos reunir esses veículos, tornar pública a nossa base de dados sobre essas iniciativas e construir um panorama acerca do jornalismo comunitário brasileiro, contribuindo para a reflexão e elaboração de iniciativas para o setor.</p>
+            <p>Acesse, colabore, compartilhe!</p>
+            <h3>Adicione seu veículo</h3>
+            <p>Acesse <a href="" target="_blank">o formulário neste link</a> e divulgue sua iniciativa.</p>
+        </div>
+    </div>
+    <!-- end wrapper -->
+    <script id="hackSpotsTable" type="text/html">
+        <table>
+            <tr>
+                <th class="tHeader">Nome</th>
+                <th class="tHeader">Endereço</th>
+                <th class="tHeader">Cidade</th>
+                <th class="tHeader">Tag</th>
+                <th class="">Elsewhere</th>
+            </tr> {{#rows}}
+            <tr id="{{rowNumber}}" class="spotRow">
+                <td>{{nome}}</td>
+                <td>{{endereco}}</td>
+                <td>{{cidade}}</td>
+                <td>{{tag}}</td>
+                <td><a class="button" href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">G Map</a></td>
+            </tr> {{/rows}} </table>
+    </script>
+    <script id="latestSpot" type="text/html"> {{#rows}}
+        <h4 class="fauxButton">Projeto</h4>
+        <h2>{{nome}}</h2>
+        <p class="colorText">{{endereco}}
+            <p>
+                <p class="colorText">{{cidade}} - {{estado}}</p>
+                <!-- "nome", "endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "tag",	"secundario", "descricao" -->
+                <ul>
+                    <li><span class="category">Descrição:</span> {{descricao}}</li>
+                    <li><span class="category">Site:</span> <a href="{{pagina}}" tager="_blank">{{pagina}}</a></li>
+                    <li><span class="category">Email:</span> <a href="mailto:{{email}}">{{email}}</a></li>
+                    <li><span class="category">Tag:</span> {{tag}}</li>
+                    <li><span class="category">Outros assuntos:</span> {{tag2}}</li>
+                </ul>
+                <ul>
+                    <li><a href="https://maps.google.com/maps?q={{address}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
+                </ul> {{/rows}} </script>
+    <script id="theNumberofSpots" type="text/html">
+        <p><strong><span class="red-text">{{numberOfSpots}}</span></strong> projetos mapeados!</p>
+    </script>
+    <script id="selectedSpot" type="text/html"> {{#rows}}
+        <h4 class="fauxButton">Projeto</h4>
+        <h2>{{nome}}</h2>
+        <p class="colorText">{{endereco}}
+            <p>
+                <p class="colorText">{{cidade}} - {{estado}}</p>
+                <!-- "nome", "endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "tag",	"secundario", "descricao" -->
+                <ul>
+                    <li><span class="category">Descrição:</span> {{descricao}}</li>
+                    <li><span class="category">Site:</span> <a href="{{pagina}}" tager="_blank">{{pagina}}</a></li>
+                    <li><span class="category">Email:</span> <a href="mailto:{{email}}">{{email}}</a></li>
+                    <li><span class="category">Tag:</span> {{tag}}</li>
+                    <li><span class="category">Outros assuntos:</span> {{tag2}}</li>
+                </ul>
+                <ul>
+                    <li><a href="https://maps.google.com/maps?q={{address}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
+                </ul> {{/rows}} </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+                var gData
+                var URL = "https://docs.google.com/spreadsheets/d/1FVQfK10HV0hQ_4Pjb6A5-iUfeySnzBIvYMRcbK4BvBE/pubhtml"
+                Tabletop.init({
+                    key: URL
+                    , callback: showInfo
+                    , simpleSheet: true
+                })
+            })
+            // so long, so messy
+        function showInfo(gData) {
+            tableOptions = {
+                    "data": gData
+                    , "tableDiv": "#hackSpotsTable"
+                    , "filterDiv": "#tableFilter"
+                }
+                // make the table, and the search bar
+            Sheetsee.makeTable(tableOptions)
+            Sheetsee.initiateTableFilter(tableOptions)
+                // create geoJSON with coordinates and other
+                // useful bits from the original data
+            var optionsJSON = ["nome", "endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "tag", "secundario", "descricao"]
+            var geoJSON = Sheetsee.createGeoJSON(gData, optionsJSON)
+                // create map, tilelayer (map background), markers and popups
+            var map = Sheetsee.loadMap("map")
+            Sheetsee.addTileLayer(map, 'volt.096bgaad')
+            var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, "<h2>{{ nome }}</h2>", true)
+                // find the latest spot with the most important
+                // info filled in (to prevent map breaking if
+                // someone is currently editing spreadsheet)
+            var theLatestSpot = findLatestCompleteSpot(gData)
+            var latestSpot = Sheetsee.ich.latestSpot({
+                    rows: theLatestSpot
+                })
+                // set it and pan to it
+            $('#latestSpot').html(latestSpot)
+            map.setView([theLatestSpot.lat, theLatestSpot.long], 14)
+                // when someone clicks on a row, highlight it and
+                // re-center the map
+                // TODO show popup, change marker color
+            $('.spotRow').live("click", function (event) {
+                    $('.spotRow').removeClass("selectedRow")
+                    var rowNumber = $(this).closest("tr").attr("id")
+                    $('#' + rowNumber).addClass("selectedRow")
+                    var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
+                    var selectedSpot = Sheetsee.ich.selectedSpot({
+                        rows: dataElement
+                    })
+                    $('#latestSpot').css("display", "none")
+                    $('#selectedSpot').html(selectedSpot).css("display", "inline")
+                    var selectedCoords = [dataElement[0].lat, dataElement[0].long]
+                    map.setView(selectedCoords, 14)
+                })
+                // so that the first map and info that loads
+                // is complete and doesn't show rows that are
+                // actively being edited by folk
+            function findLatestCompleteSpot(data) {
+                var latestCompleteSpot = []
+                var startWithLatestRow = data.reverse()
+                startWithLatestRow.forEach(function (row) {
+                    if (!row.lat || !row.long || !row.nome || !row.endereco || !row.cidade || !row.estado) return
+                    else latestCompleteSpot.push(row)
+                })
+                return latestCompleteSpot[0]
+            }
+            // Add click listener to the markerLayer
+            markerLayer.on('click', function (e) {
+                    // clear any selected rows
+                    $('.spotRow').removeClass("selectedRow")
+                        // get row number of selected marker
+                    var rowNumber = e.layer.feature.opts.rowNumber
+                        // find that row in the table and make consider it selected
+                    $('#' + rowNumber).addClass("selectedRow")
+                        // using row number, get the data for the selected spot
+                    var dataElement = Sheetsee.getMatches(gData, rowNumber.toString(), "rowNumber")
+                        // take those details and re-write the selected spot section
+                    var selectedSpot = Sheetsee.ich.selectedSpot({
+                            rows: dataElement
+                        })
+                        // center the map on the selected element
+                    map.panTo([dataElement[0].lat, dataElement[0].long])
+                        // update the spot listing
+                    $('#latestSpot').css("display", "none")
+                    $('#selectedSpot').html(selectedSpot).css("display", "inline")
+                })
+                // reset the map, zoom out, and recenter on 0,0
+            $('.resetMap').click(function () {
+                    $('.spotRow').removeClass("selectedRow")
+                    $('#latestSpot').css("display", "inline")
+                    $('#selectedSpot').css("display", "none")
+                    map.setView([0, 0], 1)
+                })
+                // find total number of spots added
+            var theNumberofSpots = Sheetsee.ich.theNumberofSpots({
+                numberOfSpots: gData.length
+            })
+            $('#theNumberofSpots').html(theNumberofSpots)
+            if (window.location.hash) {
+                $('#tableFilter').val(window.location.hash.substring(1)).keyup()
+                $('.spotRow').first().click()
+            }
+        }
+        $(document).on('keyup', '#tableFilter', function () {
+            window.location.hash = $(this).val()
+            $('.spotRow').first().click()
+        })
+    </script>
+</body>
+
+</html>
