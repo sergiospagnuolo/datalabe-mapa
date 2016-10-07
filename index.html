@@ -15,24 +15,47 @@
     <link media="screen" rel="stylesheet" type="text/css" href="css/style.css">
     <link media="screen" rel="stylesheet" type="text/css" href="css/site.css">
     <link rel="stylesheet" href="css/MarkerCluster.css" />
-    <link rel="stylesheet" href="css/MarkerCluster.Default.css" /> </head>
-<script src="https://use.fontawesome.com/ad3531ba27.js"></script>
+    <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+    <script src="https://use.fontawesome.com/ad3531ba27.js"></script>
+    
+    <!-- METAS -->
+    <meta name="author" content="Data_Labe - Observatório de Favelas">
+    <meta name="description" content="Mapa do Jornalismo Comunitário no Brasil">
+    <meta name="keywords" content="Brasil, jornalismo de dados, jornalismo, favelas, comunidade, comunitário">
+    <meta name='url' content='http://mapa.datalabe.org'>
+    <meta name='coverage' content='Brasil'>
+    <meta name='distribution' content='Global'>
+    <meta name='rating' content='General'>
+    <meta name='subtitle' content='Mapa do Jornalismo Comunitário no Brasil'>
+    <meta name='target' content='all'>
+    <meta name='HandheldFriendly' content='True'>
+    <meta name='MobileOptimized' content='320'>
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="http://mapa.datalabe.org">
+    <meta property="og:title" content="Mapa do Jornalismo Comunitário">
+    <meta property="og:description" content="Uma plataforma de georeferenciamento que reúne veículos de comunicação comunitária do Brasil">
+    </head>
 
-<body>
+    <body>
     <div class="wrapper">
         <h1>Mapa do Jornalismo Comunitário</h1>
         <div>
             <ul class="nav">
-                <li><a href="http://datalabe.org" target="_blank"><strong>Um projeto do Data_Labe</strong></a> - <a href="http://observatoriodefavelas.org.br" target="_blank">Observatório de Favelas</a> || </li>
-                <li><a href="#info">Sobre o Projeto</a> -</li>
+                <li><a href="http://datalabe.org" target="_blank">Um projeto do <strong>Data_Labe</strong></a> - <a href="http://of.org.br/pt" target="_blank">Observatório de Favelas</a> || </li>
+                <li><a href="#info">Sobre</a> -</li>
                 <li><a href="#colabore">Colabore</a> || </li>
-                <li><a href="http://www.facebook.com/datalabe" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a>
-                    <li><a href="http://www.twitter.com/data_labe" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
-                    <li><a href="http://www.medium.com/data-labe" target="_blank"><i class="fa fa-medium fa-lg" aria-hidden="true"></i></a></li>
+                <li><a href="http://twitter.com/share?text=Mapa do Jornalismo Comunitário &url=http://mapa.datalabe.org" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3//mapa.datalabe.org" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
+                
             </ul>
         </div>
+        <hr>
+       <br>
         <div class="container">
-            <input id="tableFilter" type="text" placeholder="Busque um projeto"> <span class="clear button">Limpar</span> <span class="resetMap button">Reiniciar Mapa</span> <span class="noMatches">Não encontramos esse projeto, tente outro!</span> </div>
+            <div id="theNumberofSpots"></div>
+            <input id="tableFilter" type="text" placeholder="Busque um projeto"> <span class="clear button">Limpar</span> <span class="resetMap button">Reiniciar Mapa</span> <span class="noMatches">Não encontramos esse projeto, tente outro!</span> 
+            
+        </div>
     </div>
     <div class="container-mapa">
         <div id="map"></div>
@@ -44,22 +67,26 @@
                 <div id="selectedSpot"></div>
             </div>
         </div>
-        <hr>
-        <div class="container">
+
             <div id="hackSpotsTable"></div>
-        </div>
+ 
         <div id="info" class="container">
             <h3 id="colabore">Adicione seu veículo</h3>
             <p>Acesse <a href="https://docs.google.com/forms/d/e/1FAIpQLScsLQ_OYRAkj6CRhxmYJZQaZabaly3zvsiz08eBRUSQf4vAFA/viewform" target="_blank">o formulário neste link</a> e divulgue sua iniciativa.</p>
             <h3 id="colabore">Acesse os dados</h3>
             <p>Formato de <a href="https://docs.google.com/spreadsheets/d/1FVQfK10HV0hQ_4Pjb6A5-iUfeySnzBIvYMRcbK4BvBE/pubhtml" target="_blank">tabela no Google Sheets</a> e <a href="https://raw.githubusercontent.com/voltdatalab/datalabe-mapa/gh-pages/api_datalabe.json" target="_blank">API em Json</a>.</p>
             <h3>Colabore</h3>
-            <div id="theNumberofSpots"></div>
             <p>O mapa do jornalismo comunitário é uma plataforma de georeferenciamento que reúne veículos de comunicação comunitária do Brasil. Entendemos como veículos de comunicação comunitária aqueles que se caracterizam por processos baseados em princípios públicos, que propiciem a participação ativa da população, que sejam de propriedade coletiva e que não tenham fins lucrativos. </p>
             <p>Nesse mapa, escolhemos abranger aqueles veículos já articulados, produzidos, difundidos ou protagonizados por sujeitos, coletivos e organizações de favelas e outros territórios populares. Excluímos os blogs pessoais, veículos que não produzem conteúdo próprio ou só replicam conteúdo de outros e os que estão inativos.</p>
-            <p>A plataforma é colaborativa e qualquer iniciativa que se encaixe nos critérios estabelecidos pode se inscrever e ser adicionada ao mapa. Utilizamos como ponto de partida a base de dados produzida pelo projeto Direito à Comunicação e Justiça Racial, realizado em 2014 pelo @Observatório de Favelas. A partir dela entramos em contato com os veículos, a atualizamos e conseguimos iniciar a plataforma com alguns dos principais veículos de comunicação comunitária do Rio de Janeiro.</p>
-            <p>O projeto é um dos produtos do @Datalabe, um laboratório de dados na favela. Acreditamos que o empoderamento da juventude de periferia do Brasil passa, necessariamente, pelo acesso, produção e difusão de informações e hoje o jornalismo comunitário é um dos principais responsáveis por garantir esses direitos. Aqui, pretendemos reunir esses veículos, tornar pública a nossa base de dados sobre essas iniciativas e construir um panorama acerca do jornalismo comunitário brasileiro, contribuindo para a reflexão e elaboração de iniciativas para o setor.</p>
-            <p>Acesse, colabore, compartilhe!</p>
+            <p>A plataforma é colaborativa e qualquer iniciativa que se encaixe nos critérios estabelecidos pode se inscrever e ser adicionada ao mapa. Utilizamos como ponto de partida a base de dados produzida pelo projeto <a href="http://of.org.br/projetos/comunicacao-projetos/direito-a-comunicacao-e-justica-racial/" target="_blank">Direito à Comunicação e Justiça Racial</a>, realizado em 2014 pelo <a href="http://of.org.br/pt" target="_blank">Observatório de Favelas</a>. A partir dela entramos em contato com os veículos, a atualizamos e conseguimos iniciar a plataforma com alguns dos principais veículos de comunicação comunitária do Rio de Janeiro.</p>
+            <p>O projeto é um dos produtos do <a href="http://datalabe.org" target="_blank">@Datalabe</a>, um laboratório de dados na favela. Acreditamos que o empoderamento da juventude de periferia do Brasil passa, necessariamente, pelo acesso, produção e difusão de informações e hoje o jornalismo comunitário é um dos principais responsáveis por garantir esses direitos. Aqui, pretendemos reunir esses veículos, tornar pública a nossa base de dados sobre essas iniciativas e construir um panorama acerca do jornalismo comunitário brasileiro, contribuindo para a reflexão e elaboração de iniciativas para o setor.</p>
+            <p>A plataforma foi desenvolvida pela agência de jornalismo de dados <a href="http://voltdata.info" target="_blank">Volt Data Lab.</a></p>
+            <p><span class="red-text category">Acesse, colabore, compartilhe!</span></p>
+            <ul class="nav" style="padding-left:4px;">
+                <li>Siga o Data_Labe:</li>
+                <li><a href="http://www.facebook.com/datalabe" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a>
+                    <li><a href="http://www.twitter.com/data_labe" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
+                    <li><a href="http://www.medium.com/data-labe" target="_blank"><i class="fa fa-medium fa-lg" aria-hidden="true"></i></a></li></ul>
         </div>
     </div>
     <!-- end wrapper -->
@@ -67,38 +94,43 @@
         <table>
             <tr>
                 <th class="tHeader">Nome</th>
-                <th class="tHeader">Endereço</th>
                 <th class="tHeader">Cidade</th>
-                <th class="tHeader">Tag</th>
+                <th class="tHeader">Tema</th>
             </tr> {{#rows}}
             <tr id="{{rowNumber}}" class="spotRow">
                 <td>{{nome}}</td>
-                <td>{{endereco}}</td>
                 <td>{{cidade}}</td>
                 <td>{{tag}}</td>
             </tr> {{/rows}} </table>
     </script>
     <script id="latestSpot" type="text/html"> {{#rows}}
-        <h4 class="fauxButton">Projeto</h4>
+        <!--<h4 class="fauxButton">Projeto</h4>-->
         <h2>{{nome}}</h2>
         <p class="colorText">{{endereco}}
         </p>
                 <p class="colorText">{{cidade}} - {{estado}}</p>
                 <ul>
+                    <li><span class="category">Ano de fundação:</span> {{ano}}</li>
                     <li><span class="category">Descrição:</span> {{descricao}}</li>
                     <li><span class="category">Site:</span> <a href="{{pagina}}" tager="_blank">{{pagina}}</a></li>
                     <li><span class="category">Email:</span> <a href="mailto:{{email}}">{{email}}</a></li>
-                    <li><span class="category">Tag:</span> {{tag}}</li>
+                    <li><span class="category">Tema principal:</span> {{tag}}</li>
                     <li><span class="category">Outros assuntos:</span> {{tag2}}</li>
                 </ul>
                 <ul>
-                    <a class="button" href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">Veja no Google Maps</a>
-                </ul> {{/rows}} </script>
+                    <li><a href="{{facebook}}" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
+                    <a href="{{twitter}}" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
+                    <a href="{{outra}}" target="_blank"><i class="fa fa-youtube-play fa-lg" aria-hidden="true"></i>
+</a></li>
+                </ul>
+                <p>
+                    <a href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">Veja no Google Maps</a>
+                </p> {{/rows}} </script>
     <script id="theNumberofSpots" type="text/html">
-        <p><strong><span class="red-text">{{numberOfSpots}}</span></strong> projetos mapeados!</p>
+        <h2 id="mapeados"><strong><span class="red-text">{{numberOfSpots}}</span></strong> projetos mapeados!</h2>
     </script>
     <script id="selectedSpot" type="text/html"> {{#rows}}
-        <h4 class="fauxButton">Projeto</h4>
+        <!--<h4 class="fauxButton">Projeto</h4>-->
         <h2>{{nome}}</h2>
         <p class="colorText">{{endereco}}
         </p>
@@ -135,7 +167,7 @@
             Sheetsee.initiateTableFilter(tableOptions)
                 // create geoJSON with coordinates and other
                 // useful bits from the original data
-            var optionsJSON = ["nome", "endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "tag", "secundario", "descricao"]
+            var optionsJSON = ["nome", "endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "tag", "secundario", "descricao", "rowNumber"]
             var geoJSON = Sheetsee.createGeoJSON(gData, optionsJSON)
                 // create map, tilelayer (map background), markers and popups
             var map = Sheetsee.loadMap("map")
@@ -174,7 +206,7 @@
                 var latestCompleteSpot = []
                 var startWithLatestRow = data.reverse()
                 startWithLatestRow.forEach(function (row) {
-                    if (!row.lat || !row.long || !row.nome || !row.endereco || !row.cidade || !row.estado) return
+                    if (!row.lat || !row.long || !row.nome || !row.endereco || !row.cidade || !row.estado  || !row.descricao || !row.tag ) return
                     else latestCompleteSpot.push(row)
                 })
                 return latestCompleteSpot[0]
