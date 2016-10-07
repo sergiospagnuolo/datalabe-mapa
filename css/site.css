@@ -303,9 +303,22 @@ td{
     #wrapper {
         max-width: 460px;
         padding-top: 20px;
+        margin: 0;
     }
     #hackSpotsTable,
     #map {
         min-width: 150px;
+    }
+    #rightSide {
+    padding: 20px 10px;
+    }
+    .container{
+    margin: 0;   
+    }
+    #tagging{
+        display: none;
+    }
+    h1{
+        font-size: 3em;
     }
 }
