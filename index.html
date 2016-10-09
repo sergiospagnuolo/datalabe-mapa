@@ -138,15 +138,22 @@
         </p>
                 <p class="colorText">{{cidade}} - {{estado}}</p>
                 <ul>
+                    <li><span class="category">Ano de fundação:</span> {{ano}}</li>
                     <li><span class="category">Descrição:</span> {{descricao}}</li>
                     <li><span class="category">Site:</span> <a href="{{pagina}}" tager="_blank">{{pagina}}</a></li>
                     <li><span class="category">Email:</span> <a href="mailto:{{email}}">{{email}}</a></li>
-                    <li><span class="category">Tag:</span> {{tag}}</li>
+                    <li><span class="category">Tema principal:</span> {{tag}}</li>
                     <li><span class="category">Outros assuntos:</span> {{tag2}}</li>
                 </ul>
                 <ul>
-                    <a class="button" href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">Veja no Google Maps</a>
-                </ul> {{/rows}} </script>
+                    <li><a href="{{facebook}}" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
+                    <a href="{{twitter}}" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
+                    <a href="{{outra}}" target="_blank"><i class="fa fa-youtube-play fa-lg" aria-hidden="true"></i>
+</a></li>
+                </ul>
+                <p>
+                    <a href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">Veja no Google Maps</a>
+                </p> {{/rows}} </script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
                 var gData
