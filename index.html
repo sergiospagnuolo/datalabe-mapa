@@ -70,31 +70,24 @@
             <br><input id="tableFilter" type="text" placeholder="Buscas por nomes, tags, cidades, estados etc."> <span class="clear button">Limpar</span> <span class="resetMap button">Reiniciar Mapa</span> 
             <br>
             <p id="tagging"><span class="category">TAGS:</span>
-                <a href="#" id="1" class="btn" onclick="reply_click(this)" data-product-name="Comunicação e tecnologia"> Comunicação e tecnologia | </a>
-                <a href="#" id="2" class="btn" onclick="reply_click(this)" data-product-name="Cultura e Entretenimento">Cultura e Entretenimento | </a>
-                <a href="#" id="3" class="btn" onclick="reply_click(this)" data-product-name="Economia e negócios">Economia e negócios | </a>
-                <a href="#" id="4" class="btn" onclick="reply_click(this)" data-product-name="Educação">Educação | </a>
-                <a href="#" id="5" class="btn" onclick="reply_click(this)" data-product-name="Gênero">Gênero | </a>
-                <a href="#" id="6" class="btn" onclick="reply_click(this)" data-product-name="Juventude">Juventude | </a>
-                <a href="#" id="7" class="btn" onclick="reply_click(this)" data-product-name="Meio ambiente">Meio ambiente | </a>
-                <a href="#" id="8" class="btn" onclick="reply_click(this)" data-product-name="Mobilidade urbana">Mobilidade urbana e Acessibilidade | </a>
-                <a href="#" id="9" class="btn" onclick="reply_click(this)" data-product-name="Moda e Estética">Moda e Estética | </a>
-                <a href="#" id="10" class="btn" onclick="reply_click(this)" data-product-name="Notícias locais">Notícias locais | </a>
-                <a href="#" id="11" class="btn" onclick="reply_click(this)" data-product-name="Política">Política | </a>
-                <a href="#" id="12" class="btn" onclick="reply_click(this)" data-product-name="Questão racial">Questão racial | </a>
-                <a href="#" id="13" class="btn" onclick="reply_click(this)" data-product-name="Questão indígena">Questão indígena | </a>
-                <a href="#" id="14" class="btn" onclick="reply_click(this)" data-product-name="Religião">Religião | </a>
-                <a href="#" id="15" class="btn" onclick="reply_click(this)" data-product-name="Saúde">Saúde | </a>
-                <a href="#" id="16" class="btn" onclick="reply_click(this)" data-product-name="Segurança">Segurança</a></p>
+                <a id="1" class="btn" onclick="reply_click(this)" data-product-name="Comunicação e tecnologia"> Comunicação e tecnologia | </a>
+                <a id="2" class="btn" onclick="reply_click(this)" data-product-name="Cultura e Entretenimento">Cultura e Entretenimento | </a>
+                <a id="3" class="btn" onclick="reply_click(this)" data-product-name="Economia e negócios">Economia e negócios | </a>
+                <a id="4" class="btn" onclick="reply_click(this)" data-product-name="Educação">Educação | </a>
+                <a id="5" class="btn" onclick="reply_click(this)" data-product-name="Gênero">Gênero | </a>
+                <a id="6" class="btn" onclick="reply_click(this)" data-product-name="Juventude">Juventude | </a>
+                <a id="7" class="btn" onclick="reply_click(this)" data-product-name="Meio ambiente">Meio ambiente | </a>
+                <a id="8" class="btn" onclick="reply_click(this)" data-product-name="Mobilidade urbana">Mobilidade urbana e Acessibilidade | </a>
+                <a id="9" class="btn" onclick="reply_click(this)" data-product-name="Moda e Estética">Moda e Estética | </a>
+                <a id="10" class="btn" onclick="reply_click(this)" data-product-name="Notícias locais">Notícias locais | </a>
+                <a id="11" class="btn" onclick="reply_click(this)" data-product-name="Política">Política | </a>
+                <a id="12" class="btn" onclick="reply_click(this)" data-product-name="Questão racial">Questão racial | </a>
+                <a id="13" class="btn" onclick="reply_click(this)" data-product-name="Questão indígena">Questão indígena | </a>
+                <a id="14" class="btn" onclick="reply_click(this)" data-product-name="Religião">Religião | </a>
+                <a id="15" class="btn" onclick="reply_click(this)" data-product-name="Saúde">Saúde | </a>
+                <a id="16" class="btn" onclick="reply_click(this)" data-product-name="Segurança">Segurança</a></p>
             
-            <script type="text/javascript">
-    
-    function reply_click(element)
-    {
-    document.getElementById('tableFilter').value = element.getAttribute('data-product-name');
-    }    
-    
-</script>
+            
         </div>
         <div id="info" class="container">
             <div id="theNumberofSpots"></div>
@@ -201,7 +194,8 @@
             Sheetsee.initiateTableFilter(tableOptions)
                 // create geoJSON with coordinates and other
                 // useful bits from the original data
-            var optionsJSON = ["nome", "endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "tag", "secundario", "descricao", "rowNumber"]
+            var optionsJSON = ["nome", "tag", "secundario", "rowNumber"]
+            //"endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "descricao"
             var geoJSON = Sheetsee.createGeoJSON(gData, optionsJSON)
                 // create map, tilelayer (map background), markers and popups
             var map = Sheetsee.loadMap("map")
@@ -287,6 +281,15 @@
             $('.spotRow').first().click()
         })
     </script>
+    
+    <script type="text/javascript">
+    
+    function reply_click(element)
+    {
+    document.getElementById('tableFilter').value = element.getAttribute('data-product-name');
+    }    
+    
+</script>
 </body>
 
 </html>
