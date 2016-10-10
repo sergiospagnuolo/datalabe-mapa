@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Mapa do Jornalismo Comunitário</title>
+    <title>Mapa da Comunicação Comunitária</title>
     <meta charset='utf-8'>
     <script type="text/javascript" src='js/jquery.js '></script>
     <script type="text/javascript" src='js/tabletop1.3.4.js'></script>
@@ -20,48 +20,44 @@
     
     <!-- METAS -->
     <meta name="author" content="Data_Labe - Observatório de Favelas">
-    <meta name="description" content="Mapa do Jornalismo Comunitário no Brasil">
-    <meta name="keywords" content="Brasil, jornalismo de dados, jornalismo, favelas, comunidade, comunitário">
+    <meta name="description" content="Mapa da Comunicação Comunitária">
+    <meta name="keywords" content="Brasil, comunicação, jornalismo de dados, jornalismo, favelas, comunidade, comunitário">
     <meta name='url' content='http://mapa.datalabe.org'>
     <meta name='coverage' content='Brasil'>
     <meta name='distribution' content='Global'>
     <meta name='rating' content='General'>
-    <meta name='subtitle' content='Mapa do Jornalismo Comunitário no Brasil'>
+    <meta name='subtitle' content='Mapa da Comunicação Comunitária'>
     <meta name='target' content='all'>
     <meta name='HandheldFriendly' content='True'>
     <meta name='MobileOptimized' content='320'>
     <meta property="og:image" content="https://github.com/voltdatalab/datalabe-mapa/blob/gh-pages/main-image.png?raw=true" />
     <meta property="og:url" content="http://mapa.datalabe.org">
-    <meta property="og:title" content="Mapa do Jornalismo Comunitário">
+    <meta property="og:title" content="Mapa da Comunicação Comunitária">
     <meta property="og:description" content="Uma plataforma de georeferenciamento que reúne veículos de comunicação comunitária do Brasil">
     </head>
 
     <body>
     <div class="wrapper">
-        <h1>Mapa do Jornalismo Comunitário</h1>
+        <h1>Mapa da Comunicação Comunitária</h1>
         <div>
             <ul class="nav">
-                <li><a href="http://datalabe.org" target="_blank">Um projeto do <strong>Data_Labe</strong></a> - <a href="http://of.org.br/pt" target="_blank">Observatório de Favelas</a> || </li>
-                <li><a href="#info">Sobre</a> -</li>
-                <li><a href="#colabore">Colabore</a> || </li>
-                <li><a href="http://twitter.com/share?text=Mapa do Jornalismo Comunitário, por @data_labe &url=http://mapa.datalabe.org" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
-                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//mapa.datalabe.org" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
+                <li><a href="http://datalabe.org" target="_blank">Um projeto do <strong>Data_Labe</strong></a></li>
+                <li><a href="http://of.org.br/pt" target="_blank">Observatório de Favelas</a></li>
+                <li><a href="#info">Sobre</a></li>
+                <li><a href="#colabore">Participe</a></li>
+                <li><a href="http://twitter.com/share?text=Mapa da Comunicação Comunitária, por @data_labe &url=http://mapa.datalabe.org" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//mapa.datalabe.org" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> <li><a href="http://www.medium.com/data-labe" target="_blank"><i class="fa fa-medium fa-lg" aria-hidden="true"></i></a></li></li>
                 
             </ul>
         </div>
         <hr>
        <br>
-        <div class="container">
-            <div id="theNumberofSpots"></div>
-            <div id="hackSpotsTable"></div><br><br>
-            <p style="padding:4px;" id="tagging"><span class="category">TAGS:</span>Notícias locais || Cultura e Entretenimento || Segurança || Comunicação e Tecnologia || Gênero || Política || Juventude</p>
-            <input id="tableFilter" type="text" placeholder="Buscas por nomes, tags, cidades, estados etc."> <span class="clear button">Limpar</span> <span class="resetMap button">Reiniciar Mapa</span> <span class="noMatches">Não encontramos esse projeto, tente outro!</span> 
-            
-        </div>
     </div>
+        <div class="wrapper">
     <div class="container-mapa">
         <div id="map"></div>
     </div>
+        </div>
     <div class="wrapper">
         <div class="container">
             <div id="rightSide">
@@ -69,22 +65,53 @@
                 <div id="selectedSpot"></div>
             </div>
         </div>
-
+        <div class="container">
+            <span class="noMatches">Não encontramos esse projeto, tente outro!</span> 
+            <br><input id="tableFilter" type="text" placeholder="Buscas por nomes, tags, cidades, estados etc."> <span class="clear button">Limpar</span> <span class="resetMap button">Reiniciar Mapa</span> 
+            <br>
+            <p id="tagging"><span class="category">TAGS:</span>
+                <a href="#" id="1" class="btn" onclick="reply_click(this)" data-product-name="Comunicação e tecnologia"> Comunicação e tecnologia | </a>
+                <a href="#" id="2" class="btn" onclick="reply_click(this)" data-product-name="Cultura e Entretenimento">Cultura e Entretenimento | </a>
+                <a href="#" id="3" class="btn" onclick="reply_click(this)" data-product-name="Economia e negócios">Economia e negócios | </a>
+                <a href="#" id="4" class="btn" onclick="reply_click(this)" data-product-name="Educação">Educação | </a>
+                <a href="#" id="5" class="btn" onclick="reply_click(this)" data-product-name="Gênero">Gênero | </a>
+                <a href="#" id="6" class="btn" onclick="reply_click(this)" data-product-name="Juventude">Juventude | </a>
+                <a href="#" id="7" class="btn" onclick="reply_click(this)" data-product-name="Meio ambiente">Meio ambiente | </a>
+                <a href="#" id="8" class="btn" onclick="reply_click(this)" data-product-name="Mobilidade urbana">Mobilidade urbana e Acessibilidade | </a>
+                <a href="#" id="9" class="btn" onclick="reply_click(this)" data-product-name="Moda e Estética">Moda e Estética | </a>
+                <a href="#" id="10" class="btn" onclick="reply_click(this)" data-product-name="Notícias locais">Notícias locais | </a>
+                <a href="#" id="11" class="btn" onclick="reply_click(this)" data-product-name="Política">Política | </a>
+                <a href="#" id="12" class="btn" onclick="reply_click(this)" data-product-name="Questão racial">Questão racial | </a>
+                <a href="#" id="13" class="btn" onclick="reply_click(this)" data-product-name="Questão indígena">Questão indígena | </a>
+                <a href="#" id="14" class="btn" onclick="reply_click(this)" data-product-name="Religião">Religião | </a>
+                <a href="#" id="15" class="btn" onclick="reply_click(this)" data-product-name="Saúde">Saúde | </a>
+                <a href="#" id="16" class="btn" onclick="reply_click(this)" data-product-name="Segurança">Segurança</a></p>
             
- 
+            <script type="text/javascript">
+    
+    function reply_click(element)
+    {
+    document.getElementById('tableFilter').value = element.getAttribute('data-product-name');
+    }    
+    
+</script>
+        </div>
         <div id="info" class="container">
-            <h3 id="colabore">Adicione seu veículo</h3>
-            <p>Acesse <a href="https://docs.google.com/forms/d/e/1FAIpQLScsLQ_OYRAkj6CRhxmYJZQaZabaly3zvsiz08eBRUSQf4vAFA/viewform" target="_blank">o formulário neste link</a> e divulgue sua iniciativa.</p>
-            <h3 id="colabore">Acesse os dados</h3>
+            <div id="theNumberofSpots"></div>
+            <div id="hackSpotsTable"></div><br><br>
+            <h3 id="colabore">Participe</h3>
+            <p>Acesse o <a href="https://docs.google.com/forms/d/e/1FAIpQLScsLQ_OYRAkj6CRhxmYJZQaZabaly3zvsiz08eBRUSQf4vAFA/viewform" target="_blank">formulário neste link</a>, adicione seu veículo e participe do mapa.</p>
+            <h3>Acesse os dados</h3>
             <p>Formato de <a href="https://docs.google.com/spreadsheets/d/1FVQfK10HV0hQ_4Pjb6A5-iUfeySnzBIvYMRcbK4BvBE/pubhtml" target="_blank">tabela no Google Sheets</a> e <a href="https://raw.githubusercontent.com/voltdatalab/datalabe-mapa/gh-pages/api_datalabe.json" target="_blank">API em Json</a>.</p>
-            <h3>Colabore</h3>
-            <p>O mapa do jornalismo comunitário é uma plataforma de georeferenciamento que reúne veículos de comunicação comunitária do Brasil. Entendemos como veículos de comunicação comunitária aqueles que se caracterizam por processos baseados em princípios públicos, que propiciem a participação ativa da população, que sejam de propriedade coletiva e que não tenham fins lucrativos. </p>
+            <h3 id="info">Sobre</h3>
+            <p>O Mapa da Comunicação Comunitária é uma plataforma de georeferenciamento que reúne veículos de comunicação comunitária do Brasil. Entendemos como veículos de comunicação comunitária aqueles que se caracterizam por processos baseados em princípios públicos, que propiciem a participação ativa da população, que sejam de propriedade coletiva e que não tenham fins lucrativos. </p>
             <p>Nesse mapa, escolhemos abranger aqueles veículos já articulados, produzidos, difundidos ou protagonizados por sujeitos, coletivos e organizações de favelas e outros territórios populares. Excluímos os blogs pessoais, veículos que não produzem conteúdo próprio ou só replicam conteúdo de outros e os que estão inativos.</p>
+            <p>A plataforma é colaborativa e qualquer iniciativa que se encaixe nos critérios estabelecidos pode se inscrever e participar do mapa. Utilizamos como ponto de partida a base de dados produzida pelo projeto <a href="http://of.org.br/projetos/comunicacao-projetos/direito-a-comunicacao-e-justica-racial/" target="_blank">Direito à Comunicação e Justiça Racial</a>, realizado em 2014 pelo Observatório de Favelas com o apoio da <a href="https://www.fordfoundation.org/regions/brazil/" target="_blank">Fundação Ford</a>. A partir dela entramos em contato com os veículos, a atualizamos e conseguimos iniciar a plataforma com alguns dos principais veículos de comunicação comunitária do Rio de Janeiro.</p>
             <p>A plataforma é colaborativa e qualquer iniciativa que se encaixe nos critérios estabelecidos pode se inscrever e ser adicionada ao mapa. Utilizamos como ponto de partida a base de dados produzida pelo projeto <a href="http://of.org.br/projetos/comunicacao-projetos/direito-a-comunicacao-e-justica-racial/" target="_blank">Direito à Comunicação e Justiça Racial</a>, realizado em 2014 pelo <a href="http://of.org.br/pt" target="_blank">Observatório de Favelas</a>. A partir dela entramos em contato com os veículos, a atualizamos e conseguimos iniciar a plataforma com alguns dos principais veículos de comunicação comunitária do Rio de Janeiro.</p>
-            <p>O projeto é um dos produtos do <a href="http://datalabe.org" target="_blank">@Datalabe</a>, um laboratório de dados na favela. Acreditamos que o empoderamento da juventude de periferia do Brasil passa, necessariamente, pelo acesso, produção e difusão de informações e hoje o jornalismo comunitário é um dos principais responsáveis por garantir esses direitos. Aqui, pretendemos reunir esses veículos, tornar pública a nossa base de dados sobre essas iniciativas e construir um panorama acerca do jornalismo comunitário brasileiro, contribuindo para a reflexão e elaboração de iniciativas para o setor.</p>
+            <p>O projeto é um dos produtos do <a href="http://datalabe.org" target="_blank">Data_labe</a>, um laboratório de dados na favela. Acreditamos que o empoderamento da juventude de periferia do Brasil passa, necessariamente, pelo acesso, produção e difusão de informações e hoje a comunicação comunitária é um dos principais responsáveis por garantir esses direitos. Aqui, pretendemos reunir esses veículos, tornar pública a nossa base de dados sobre essas iniciativas e construir um panorama acerca da comunicação comunitária brasileira, contribuindo para a reflexão e elaboração de iniciativas para o setor.</p>
             <p>A plataforma foi desenvolvida pela agência de jornalismo de dados <a href="http://voltdata.info" target="_blank">Volt Data Lab.</a></p>
             <p><span class="red-text category">Acesse, colabore, compartilhe!</span></p>
-            <ul class="nav" style="padding-left:4px;">
+            <ul class="navdois">
                 <li>Siga o Data_Labe:</li>
                 <li><a href="http://www.facebook.com/datalabe" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a>
                     <li><a href="http://www.twitter.com/data_labe" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
@@ -114,16 +141,15 @@
                 <ul>
                     <li><span class="category">Ano de fundação:</span> {{ano}}</li>
                     <li><span class="category">Descrição:</span> {{descricao}}</li>
-                    <li><span class="category">Site:</span> <a href="{{pagina}}" tager="_blank">{{pagina}}</a></li>
+                    <li><span class="category">Site:</span> <a href="http://{{pagina}}" target="_blank">{{pagina}}</a> </li>
                     <li><span class="category">Email:</span> <a href="mailto:{{email}}">{{email}}</a></li>
                     <li><span class="category">Tema principal:</span> {{tag}}</li>
                     <li><span class="category">Outros assuntos:</span> {{tag2}}</li>
                 </ul>
                 <ul>
-                    <li><a href="{{facebook}}" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
-                    <a href="{{twitter}}" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
-                    <a href="{{outra}}" target="_blank"><i class="fa fa-youtube-play fa-lg" aria-hidden="true"></i>
-</a></li>
+                    <li><a href="http://{{facebook}}" target="_blank"> <i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
+                    <a href="{{twitter}}" target="_blank"> <i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
+                    </li>
                 </ul>
                 <p>
                     <a href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">Veja no Google Maps</a>
@@ -140,16 +166,15 @@
                 <ul>
                     <li><span class="category">Ano de fundação:</span> {{ano}}</li>
                     <li><span class="category">Descrição:</span> {{descricao}}</li>
-                    <li><span class="category">Site:</span> <a href="{{pagina}}" tager="_blank">{{pagina}}</a></li>
+                    <li><span class="category">Site:</span> <a href="http://{{pagina}}" target="_blank">{{pagina}}</a> </li>
                     <li><span class="category">Email:</span> <a href="mailto:{{email}}">{{email}}</a></li>
                     <li><span class="category">Tema principal:</span> {{tag}}</li>
                     <li><span class="category">Outros assuntos:</span> {{tag2}}</li>
                 </ul>
                 <ul>
-                    <li><a href="{{facebook}}" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
-                    <a href="{{twitter}}" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
-                    <a href="{{outra}}" target="_blank"><i class="fa fa-youtube-play fa-lg" aria-hidden="true"></i>
-</a></li>
+                    <li><a href="http://{{facebook}}" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
+                    <a href="{{twitter}}" target="_blank"> <i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a> &nbsp;&nbsp;
+                    </li>
                 </ul>
                 <p>
                     <a href="https://maps.google.com/maps?q={{endereco}},{{cidade}},{{estado}}" target="_blank">Veja no Google Maps</a>
@@ -245,7 +270,7 @@
                     $('.spotRow').removeClass("selectedRow")
                     $('#latestSpot').css("display", "inline")
                     $('#selectedSpot').css("display", "none")
-                    map.setView([0, 0], 1)
+                    map.setView([-22.9211744, -43.1781256], 4)
                 })
                 // find total number of spots added
             var theNumberofSpots = Sheetsee.ich.theNumberofSpots({

@@ -47,7 +47,7 @@ text {
 
 .noMatches {
     margin-left: 20px;
-    font-size: 11px;
+    font-size: 16px;
     font-style: italic;
     visibility: hidden;
 }
