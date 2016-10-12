@@ -271,6 +271,11 @@ ul.nav li a:hover {
     padding-right: 6px;
 }
 
+#social a:hover{
+    border-bottom: 0;
+    text-decoration: none
+}
+
 #info p {
     font-size: 18px;
     padding: 4px;

@@ -41,12 +41,12 @@
         <h1>Mapa da Comunicação Comunitária</h1>
         <div>
             <ul class="nav">
-                <li><a href="http://datalabe.org" target="_blank">Um projeto do <strong>Data_Labe</strong></a></li>
+                <li><a href="http://datalabe.org" target="_blank">Um projeto <strong>Data_Labe</strong></a></li>
                 <li><a href="http://of.org.br/pt" target="_blank">Observatório de Favelas</a></li>
-                <li><a href="#info">Sobre</a></li>
+                <li><a href="#info">Explore</a></li>
+                <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#colabore">Participe</a></li>
-                <li><a href="http://twitter.com/share?text=Mapa da Comunicação Comunitária, por @data_labe &url=http://mapa.datalabe.org" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
-                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//mapa.datalabe.org" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a> <li><a href="http://www.medium.com/data-labe" target="_blank"><i class="fa fa-medium fa-lg" aria-hidden="true"></i></a></li></li>
+                <li id="social"><a href="http://twitter.com/share?text=Mapa da Comunicação Comunitária, por @data_labe &url=http://mapa.datalabe.org" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>&nbsp; <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//mapa.datalabe.org" target="_blank"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a>&nbsp; <a href="http://www.medium.com/data-labe" target="_blank"><i class="fa fa-medium fa-lg" aria-hidden="true"></i></a></li>
                 
             </ul>
         </div>
@@ -96,11 +96,10 @@
             <p>Acesse o <a href="https://docs.google.com/forms/d/e/1FAIpQLScsLQ_OYRAkj6CRhxmYJZQaZabaly3zvsiz08eBRUSQf4vAFA/viewform" target="_blank">formulário neste link</a>, adicione seu veículo e participe do mapa.</p>
             <h3>Acesse os dados</h3>
             <p>Formato de <a href="https://docs.google.com/spreadsheets/d/1FVQfK10HV0hQ_4Pjb6A5-iUfeySnzBIvYMRcbK4BvBE/pubhtml" target="_blank">tabela no Google Sheets</a> e <a href="https://raw.githubusercontent.com/voltdatalab/datalabe-mapa/gh-pages/api_datalabe.json" target="_blank">API em Json</a>.</p>
-            <h3 id="info">Sobre</h3>
+            <h3 id="sobre">Sobre</h3>
             <p>O Mapa da Comunicação Comunitária é uma plataforma de georeferenciamento que reúne veículos de comunicação comunitária do Brasil. Entendemos como veículos de comunicação comunitária aqueles que se caracterizam por processos baseados em princípios públicos, que propiciem a participação ativa da população, que sejam de propriedade coletiva e que não tenham fins lucrativos. </p>
             <p>Nesse mapa, escolhemos abranger aqueles veículos já articulados, produzidos, difundidos ou protagonizados por sujeitos, coletivos e organizações de favelas e outros territórios populares. Excluímos os blogs pessoais, veículos que não produzem conteúdo próprio ou só replicam conteúdo de outros e os que estão inativos.</p>
             <p>A plataforma é colaborativa e qualquer iniciativa que se encaixe nos critérios estabelecidos pode se inscrever e participar do mapa. Utilizamos como ponto de partida a base de dados produzida pelo projeto <a href="http://of.org.br/projetos/comunicacao-projetos/direito-a-comunicacao-e-justica-racial/" target="_blank">Direito à Comunicação e Justiça Racial</a>, realizado em 2014 pelo Observatório de Favelas com o apoio da <a href="https://www.fordfoundation.org/regions/brazil/" target="_blank">Fundação Ford</a>. A partir dela entramos em contato com os veículos, a atualizamos e conseguimos iniciar a plataforma com alguns dos principais veículos de comunicação comunitária do Rio de Janeiro.</p>
-            <p>A plataforma é colaborativa e qualquer iniciativa que se encaixe nos critérios estabelecidos pode se inscrever e ser adicionada ao mapa. Utilizamos como ponto de partida a base de dados produzida pelo projeto <a href="http://of.org.br/projetos/comunicacao-projetos/direito-a-comunicacao-e-justica-racial/" target="_blank">Direito à Comunicação e Justiça Racial</a>, realizado em 2014 pelo <a href="http://of.org.br/pt" target="_blank">Observatório de Favelas</a>. A partir dela entramos em contato com os veículos, a atualizamos e conseguimos iniciar a plataforma com alguns dos principais veículos de comunicação comunitária do Rio de Janeiro.</p>
             <p>O projeto é um dos produtos do <a href="http://datalabe.org" target="_blank">Data_labe</a>, um laboratório de dados na favela. Acreditamos que o empoderamento da juventude de periferia do Brasil passa, necessariamente, pelo acesso, produção e difusão de informações e hoje a comunicação comunitária é um dos principais responsáveis por garantir esses direitos. Aqui, pretendemos reunir esses veículos, tornar pública a nossa base de dados sobre essas iniciativas e construir um panorama acerca da comunicação comunitária brasileira, contribuindo para a reflexão e elaboração de iniciativas para o setor.</p>
             <p>A plataforma foi desenvolvida pela agência de jornalismo de dados <a href="http://voltdata.info" target="_blank">Volt Data Lab.</a></p>
             <p><span class="red-text category">Acesse, colabore, compartilhe!</span></p>
@@ -117,12 +116,12 @@
             <tr>
                 <th class="tHeader">Nome</th>
                 <th class="tHeader">Cidade</th>
-                <th class="tHeader">Tema</th>
+                <th class="tHeader">Fundação</th>
             </tr> {{#rows}}
             <tr id="{{rowNumber}}" class="spotRow">
                 <td>{{nome}}</td>
                 <td>{{cidade}}</td>
-                <td>{{tag}}</td>
+                <td>{{ano}}</td>
             </tr> {{/rows}} </table>
     </script>
     <script id="latestSpot" type="text/html"> {{#rows}}
@@ -194,13 +193,13 @@
             Sheetsee.initiateTableFilter(tableOptions)
                 // create geoJSON with coordinates and other
                 // useful bits from the original data
-            var optionsJSON = ["nome", "tag", "secundario", "rowNumber"]
-            //"endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "descricao"
+            var optionsJSON = ["nome", "tag", "rowNumber", "pagina"]
+            //"endereco", "estado", "cidade", "email", "pagina", "facebook", "twitter", "instagram", "outra", "ano", "descricao", "secundario"
             var geoJSON = Sheetsee.createGeoJSON(gData, optionsJSON)
                 // create map, tilelayer (map background), markers and popups
             var map = Sheetsee.loadMap("map")
             Sheetsee.addTileLayer(map, 'volt.096bgaad')
-            var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, "<h2>{{ nome }}</h2>", true)
+            var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, "<a href='http://{{pagina}}' target='_blank'><h2> {{ nome }} </h2></a>", true)
                 // find the latest spot with the most important
                 // info filled in (to prevent map breaking if
                 // someone is currently editing spreadsheet)
@@ -208,9 +207,10 @@
             var latestSpot = Sheetsee.ich.latestSpot({
                     rows: theLatestSpot
                 })
+            
                 // set it and pan to it
             $('#latestSpot').html(latestSpot)
-            map.setView([theLatestSpot.lat, theLatestSpot.long], 14)
+            map.setView([theLatestSpot.lat, theLatestSpot.long], 10)
                 // when someone clicks on a row, highlight it and
                 // re-center the map
                 // TODO show popup, change marker color
@@ -225,7 +225,7 @@
                     $('#latestSpot').css("display", "none")
                     $('#selectedSpot').html(selectedSpot).css("display", "inline")
                     var selectedCoords = [dataElement[0].lat, dataElement[0].long]
-                    map.setView(selectedCoords, 14)
+                    map.setView(selectedCoords, 17)
                 })
                 // so that the first map and info that loads
                 // is complete and doesn't show rows that are
@@ -252,12 +252,13 @@
                         // take those details and re-write the selected spot section
                     var selectedSpot = Sheetsee.ich.selectedSpot({
                             rows: dataElement
-                        })
+                        })        
+            
                         // center the map on the selected element
                     map.panTo([dataElement[0].lat, dataElement[0].long])
                         // update the spot listing
                     $('#latestSpot').css("display", "none")
-                    $('#selectedSpot').html(selectedSpot).css("display", "inline")
+                    $('#selectedSpot').html(selectedSpot).css("display", "inline") 
                 })
                 // reset the map, zoom out, and recenter on 0,0
             $('.resetMap').click(function () {
@@ -290,6 +291,22 @@
     }    
     
 </script>
+<script>
+    $(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});</script>
+        
 </body>
 
 </html>
